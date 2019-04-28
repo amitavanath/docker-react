@@ -8,15 +8,28 @@ before_install:
 script:
   - docker run amitavanath/docker-react npm run test -- --coverage
 
+#deploy:
+#  provider: elasticbeanstalk
+#  region: "us-east-2"
+#  app: "docker"
+#  env: "Docker-env"
+#  bucket-name: "elasticbeanstalk-us-east-2-752257834760"
+#  bucket-path: "docker"
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: $AWS_SECRET_KEY
+
 deploy:
-  provider: elasticbeanstalk
-  region: "us-east-2"
-  app: "docker"
-  env: "Docker-env"
-  bucket-name: "elasticbeanstalk-us-east-2-752257834760"
-  bucket-path: "docker"
+  provider: azure_web_apps
+#  region: "us-east-2"
+#  app: "docker"
+#  env: "Docker-env"
+#  bucket-name: "elasticbeanstalk-us-east-2-752257834760"
+#  bucket-path: "docker"
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: $AWS_SECRET_KEY
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: $AWS_SECRET_KEY
